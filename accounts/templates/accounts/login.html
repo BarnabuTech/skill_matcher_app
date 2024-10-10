@@ -1,0 +1,26 @@
+{% extends "accounts/index.html" %}
+{% load crispy_forms_tags %}
+{% block start %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="content-section col-md-8 col-md-offset-2">
+<center>
+    <form method="POST" class="custom-form">
+	{% csrf_token %}
+	<fieldset class="form-group">
+	{{ form|crispy}}
+	</fieldset>
+<center>
+	<button class="btn btn-outline-info custom-login-btn" type="submit">
+        <span class="glyphicon glyphicon-log-in"></span> Log In
+      </button>
+</center>
+<br/>
+<sub class="custom-sub">
+    <a href="{% url 'register' %}" class="signup-link">Don't have an account, sign up</a>
+</sub>
+</form>
+</center>
+</div>
+{% endblock start %}

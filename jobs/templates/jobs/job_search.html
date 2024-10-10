@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Find Jobs</h2>
+<form method="POST">
+  {% csrf_token %}
+  <label for="skills">Enter your skills (comma-separated):</label>
+  <input type="text" name="skills" required>
+  <button type="submit">Search Jobs</button>
+</form>
+{% endblock %}

@@ -1,0 +1,160 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="title" content="skill_matcher_app">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="English">
+<meta name="author" content="barnabutech">
+
+<title>SKILL MATCHER APP</title>
+
+
+<!-- bootstrap file -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- bootstrap file-->
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<!-- main css -->
+<!-- <link rel="stylesheet" type="text/css" href="{% static "style.css" %}" /> -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+<!-- message here -->
+
+{% if messages %}
+{% for message in messages %}
+
+<script>
+	alert("{{ message }}");
+</script>
+
+{% endfor %}
+{% endif %}
+
+
+</head>
+
+<body class="container-fluid">
+
+<header class="row">
+
+	<!-- navbar-->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar" aria-label="Toggle navigation">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand styleheader" href="{% url "index" %}">SKILL MATCHER APP</a>
+          </div>
+          <div class="collapse navbar-collapse" id="mainNavBar">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="{% url "index" %}">Home</a></li>
+      
+              {% if user.is_authenticated %}
+              <li><a href="{% url "logout" %}"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
+              {% else %}
+              <li><a href="{% url "register" %}"><span class="glyphicon glyphicon-user"></span>  Sign up</a></li>
+              <li><a href="{% url "login" %}"><span class="glyphicon glyphicon-log-in"></span>  Log in</a></li>
+              {% endif %}
+      
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>
+<br/>
+<br>
+<br>
+<div class="row">
+	{% block start %}
+	{% if user.is_authenticated %}
+	<center><h1>welcome back {{user.username}}!</h1></center>
+	{% else %}
+	<!-- <center><h1>Log in, Please . . .</h1></center> -->
+	{% endif %}
+	{% endblock %}
+
+  <!--ADDED FEATURES FOR THE MAIN PAGE-->
+
+  <!-- <section class="hero-section">
+    <div class="hero-image">
+        <img src="{% static 'images/hero_image.jpg' %}" class="responsive-image" alt="Hero Image">
+    </div>
+    <div class="hero-content">
+        <h2>Find Your Dream Job</h2>
+        <p>Skill Matcher App connects you with the perfect job based on your skills.</p>
+        <a href="{% url 'register' %}" class="btn btn-primary">Sign Up</a>
+    </div>
+</section> -->
+<!-- <section class="hero-section">
+  <div class="hero-image">
+      <img src="{% static 'images/hero_image.jpg' %}" class="responsive-image" alt="Hero Image">
+  </div>
+  <div class="hero-content">
+      <h2 class="hero-title">Find Your Dream Job</h2>
+      <p class="hero-description">Skill Matcher App connects you with the perfect job based on your skills.</p>
+      <a href="{% url 'register' %}" class="btn btn-primary">Sign Up</a>
+  </div>
+</section>
+    
+
+<section class="features-section">
+    <h2>Key Features</h2>
+    <div class="feature-item">
+        <img src="{% static 'images/feature1.jpg' %}" class="responsive-image" alt="Feature 1">
+        <h3>Skill-Based Matching</h3>
+        <p>Discover jobs tailored to your expertise.</p>
+    </div>
+    </section>
+
+<section class="testimonials-section">
+    <h2>What Our Users Say</h2>
+    <div class="testimonial-item">
+        <img src="{% static 'images/user1.jpg' %}" alt="User 1">
+        <p>"Skill Matcher App helped me land my dream job!"</p>
+        <span>Barnabu</span>
+    </div>
+    </section>
+
+<section class="call-to-action-section">
+    <h2>Ready to Get Started?</h2>
+    <a href="{% url 'register' %}" class="btn btn-primary">Sign Up Now</a>
+</section>
+
+<section class="about-us-section">
+    <h2>About Us</h2>
+    <p>Skill Matcher App was developed to help users from informal sectors identify their skills. The app could then match them with relevant job opportunities by analyzing job postings. Linking youth to job opportunities, Inclusivity and equity.</p>
+</section>
+
+<section class="contact-section">
+    <h2>Contact Us</h2>
+    <p>Email: contact@skillmatcherapp.com</p>
+</section> -->
+
+</div>
+</body>
+
+</html>
+
+<!-- <h2>Edit Profile</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form> -->
